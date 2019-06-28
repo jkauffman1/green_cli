@@ -13,4 +13,4 @@ env:
 
 
 script:
-  - docker run -v $PWD:/green_cli $DOCKERBUILDER@sha256:$DOCKERHASH /bin/bash -c "cd /green_cli && virtualenv -p python3 venv && source venv/bin/activate && pip install -r requirements.txt && pip install ."
+  - docker run -v $PWD:/green_cli $DOCKERBUILDER@sha256:$DOCKERHASH /bin/bash -c "cd /green_cli && virtualenv -p python3 venv && source venv/bin/activate && pip install -r requirements.txt && pip install . && python setup.py sdist"
