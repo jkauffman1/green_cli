@@ -383,7 +383,7 @@ def gettransactions(session, details):
 @green.command()
 @click.option('--addressee', '-a', type=(str, int), multiple=True)
 @click.option('--subaccount', default=0, expose_value=False, callback=details_json)
-@click.option('--fee', '-f', type=int, expose_value=False, callback=details_json)
+@click.option('--fee_rate', '-f', type=int, expose_value=False, callback=details_json)
 @with_login
 @print_result
 def createtransaction(session, addressee, details):
