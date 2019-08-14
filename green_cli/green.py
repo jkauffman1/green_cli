@@ -270,6 +270,18 @@ def details_json(ctx, param, value):
     return value
 
 @green.command()
+@click.argument('asset_id', expose_value=False, callback=details_json)
+@click.option('--name', type=str, expose_value=False, callback=details_json)
+@click.option('--ticker', type=str, expose_value=False, callback=details_json)
+@click.option('--precision', type=int, expose_value=False, callback=details_json)
+@with_login
+@print_result
+def registerassetlocal(session, details):
+    """Register an asset in the local asset registry"""
+    details = {details['asset_id']: details}
+    return session.register_asset_local(details)
+
+@green.command()
 @click.argument('name', callback=details_json)
 @click.argument('type', type=click.Choice(['2of2', '2of3']), callback=details_json)
 @with_login
